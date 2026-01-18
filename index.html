@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Lukas Chachich</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- ==================== NAVIGATION BAR ==================== -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="https://cdn.freebiesupply.com/logos/large/2x/michigan-state-university-logo-png-transparent.png" alt="MSU Logo" style="height: 30px; margin-right: 10px;">
+                Lukas Chachich
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="btn btn-secondary nav-toggle-btn" onclick="toggleHeroBackground()" aria-pressed="false" title="Toggle background mode">Change Background</button>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==================== HERO/LANDING SECTION ==================== -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Lukas Chachich</h1>
+            <p class="hero-subtitle">Building exceptional digital experiences</p>
+            <div class="hero-buttons">
+                <a class="btn btn-primary" href="#projects" onclick="scrollTo('projects'); return false;">View Projects</a>
+                <a class="btn btn-primary" href="Chachich_Lukas_01-17-26.pdf" download>Download Resume</a>
+            </div>
+        </div>
+        <div class="hero-background">
+            <div class="floating-logos"></div>
+        </div>
+    </section>
+    
+    <!-- ==================== ABOUT SECTION ==================== -->
+    <section id="about" class="section about-section">
+        <div class="section-content">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-container">
+                <div class="about-image">
+                    <img src="prof_pic.png" alt="Professional profile picture" />
+                </div>
+                <div class="about-text">
+                    <p class="section-text">
+                        I'm a data science student at Michigan State University (graduating May 2028) with a passion for transforming data into actionable insights. Currently, I'm gaining practical experience as a consultant at Spectrum Consulting Group, where I manage large datasets, build interactive visualizations, and deliver key insights to high-profile clients. I'm also leading machine learning projects in the Artificial Intelligence Club, developing AI-driven solutions and exploring the capabilities and ethical implications of large language models. With a foundation in Python, SQL, Excel, and Power BI, combined with hands-on experience in eCommerce operations and client-facing consulting, I bring both technical expertise and business acumen to every project. Beyond my professional pursuits, I'm fluent in Japanese, an active member of the MSU community, and driven by a commitment to solving real-world problems through data-driven decision-making.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ==================== EXPERIENCE SECTION ==================== -->
+    <section id="experience" class="section about-section">
+        <div class="section-content">
+            <h2 class="section-title">Experience</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Spectrum Consulting Group</h3>
+                    <p><strong>Consultant</strong> | September 2025 – Present</p>
+                    <ul>
+                        <li>Managed and cleaned 11,000+ row datasets in Excel for a $20B+ aerospace client, ensuring accuracy for financial analysis and decision-making.</li>
+                        <li>Delivered cross-functional recommendations with clear scope and value, enhancing collaborative communication and client presentations.</li>
+                        <li>Created PowerPoint decks, wrote SQL queries, and built interactive Excel and Power BI visualizations for client insights.</li>
+                        <li>Developed professional skills in email communication, networking, and stakeholder presentations.</li>
+                    </ul>
+                    <p><em>Tech Stack: Excel, SQL, Power BI, PowerPoint</em></p>
+                </div>
+                <div class="skill-card">
+                    <h3>Artificial Intelligence Club</h3>
+                    <p><strong>Machine Learning Engineer</strong> | January 2025 – Present</p>
+                    <ul>
+                        <li>Led a semester-long ML project in Python, focusing on data cleaning, visualization, and feature engineering for real-world solutions.</li>
+                        <li>Researched prompt engineering and hacking techniques across 3+ LLMs, improving accuracy by 20% and exploring ethical implications.</li>
+                        <li>Developed an AI agent for playlist construction based on user preferences, reducing manual effort.</li>
+                        <li>Designed a website using Loveable AI, refining HTML skills and learning AI-assisted development.</li>
+                    </ul>
+                    <p><em>Tech Stack: Python, VS Code, HTML, AI Tools</em></p>
+                </div>
+                <div class="skill-card">
+                    <h3>Chachich Re-sale</h3>
+                    <p><strong>eCommerce Retailer</strong> | February 2020 – Present</p>
+                    <ul>
+                        <li>Managed 500+ product listings with 99%+ order accuracy on an online store.</li>
+                        <li>Boosted visibility with high-quality images and descriptions, increasing traffic by 200% and conversions by 15%.</li>
+                        <li>Conducted data-driven market research, driving 300% sales growth.</li>
+                        <li>Resolved 20+ weekly inquiries, maintaining a 4.9-star rating and improving customer retention.</li>
+                    </ul>
+                    <p><em>Tech Stack: eCommerce Platforms, Data Analysis Tools</em></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PROJECTS SECTION ==================== -->
+    <section id="projects" class="section projects-section">
+        <div class="section-content">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image-placeholder">Project 1</div>
+                    <h3>E-Commerce Platform</h3>
+                    <p>A full-stack e-commerce application with payment integration and real-time inventory management.</p>
+                    <button class="btn btn-secondary" onclick="openModal('project1')">Learn More</button>
+                </div>
+                <div class="project-card">
+                    <div class="project-image-placeholder">Project 2</div>
+                    <h3>Analytics Dashboard</h3>
+                    <p>Interactive data visualization tool providing real-time insights and customizable reports.</p>
+                    <button class="btn btn-secondary" onclick="openModal('project2')">Learn More</button>
+                </div>
+                <div class="project-card">
+                    <div class="project-image-placeholder">Project 3</div>
+                    <h3>Mobile App Suite</h3>
+                    <p>Cross-platform mobile applications built with React Native for iOS and Android.</p>
+                    <button class="btn btn-secondary" onclick="openModal('project3')">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTACT SECTION ==================== -->
+    <section id="contact" class="section contact-section">
+        <div class="section-content">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-text">Let's create something amazing together</p>
+            <p class="section-text">Email: <a href="mailto:Chachich@msu.edu">Chachich@msu.edu</a></p>
+            <p class="section-text">LinkedIn: <a href="https://www.linkedin.com/in/lukaschachich/">LinkedIn Profile</a></p>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <p>&copy; 2026 Developer Portfolio. All rights reserved.</p>
+    </footer>
+
+    <!-- ==================== MODAL ==================== -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title">Project Title</h2>
+            <p id="modal-description">Detailed description of the project.</p>
+            <h3>Technologies Used</h3>
+            <ul id="modal-tech"></ul>
+            <h3>Key Features</h3>
+            <ul id="modal-features"></ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

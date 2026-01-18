@@ -1,0 +1,789 @@
+/* ==================== CSS CUSTOM PROPERTIES (THEME VARIABLES) ==================== */
+:root {
+    /* Color Palette */
+    --color-bg-primary: #0a0a0a;
+    --color-bg-secondary: #1a1a1a;
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #b0b0b0;
+    --color-accent: #00A651;
+    --color-accent-light: #66C266;
+    --color-accent-dark: #008000;
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 3rem;
+    --spacing-xl: 4rem;
+    
+    /* Typography */
+    --font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-size-base: 16px;
+    --font-size-sm: 14px;
+    --font-size-md: 18px;
+    --font-size-lg: 24px;
+    --font-size-xl: 32px;
+    --font-size-2xl: 48px;
+    --font-size-3xl: 64px;
+    
+    /* Transitions & Animations */
+    --transition-fast: 0.2s ease-in-out;
+    --transition-normal: 0.3s ease-in-out;
+    --transition-slow: 0.5s ease-in-out;
+}
+
+/* ==================== GLOBAL STYLES ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Remove scrollbar for smooth scroll animations */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-accent);
+    border-radius: 4px;
+}
+
+/* ==================== NAVIGATION BAR ==================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 166, 81, 0.1);
+    transition: all var(--transition-fast);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--color-accent);
+    letter-spacing: 1px;
+    transition: color var(--transition-fast);
+}
+
+.logo:hover {
+    color: var(--color-accent-light);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: var(--color-text-primary);
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    transition: color var(--transition-fast);
+}
+
+/* Animated underline on nav links */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-accent);
+    transition: width var(--transition-normal);
+}
+
+.nav-link:hover {
+    color: var(--color-accent);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--color-accent);
+    margin: 5px 0;
+    transition: all var(--transition-fast);
+    border-radius: 2px;
+}
+
+/* ==================== HERO SECTION ==================== */
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-top: 60px;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, 
+        rgba(0, 166, 81, 0.1) 0%, 
+        transparent 50%, 
+        rgba(0, 166, 81, 0.05) 100%);
+    z-index: -1;
+    will-change: transform;
+}
+
+/* Simple image mode for hero background (parallax still applies) */
+.hero-background.simple-bg {
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url('https://msu-p-001.sitecorecontenthub.cloud/api/public/content/0c6fe9ca08b645548162b654eeefd86f?v=3299c5b2');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero-background.simple-bg::before,
+.hero-background.simple-bg::after {
+    content: none;
+}
+
+.hero-background.simple-bg .floating-logos {
+    display: none;
+}
+
+/* Alternate simple image mode */
+.hero-background.simple-bg-alt {
+    background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1920&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero-background.simple-bg-alt::before,
+.hero-background.simple-bg-alt::after {
+    content: none;
+}
+
+.hero-background.simple-bg-alt .floating-logos {
+    display: none;
+}
+
+/* Animated background shapes using CSS keyframes */
+.hero-background::before {
+    content: '';
+    position: absolute;
+    width: 50vw;
+    height: 50vw;
+    background-image: url('https://1000logos.net/wp-content/uploads/2019/09/Michigan-State-Spartans-Logo.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.2;
+    top: 20%;
+    right: 1%;
+    animation: float 8s ease-in-out infinite;
+}
+
+.hero-background::after {
+    content: '';
+    position: absolute;
+    width: 30vw;
+    height: 30vw;
+    background-image: url('https://1000logos.net/wp-content/uploads/2019/09/Michigan-State-Spartans-Logo.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.2;
+    bottom: 20%;
+    left: 1%;
+    animation: float 10s ease-in-out infinite reverse;
+}
+
+.floating-logos::before {
+    content: '';
+    position: absolute;
+    width: 10vw;
+    height: 10vw;
+    background-image: url('https://1000logos.net/wp-content/uploads/2019/09/Michigan-State-Spartans-Logo.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15;
+    top: 1%;
+    left: 50%;
+    animation: float 12s ease-in-out infinite;
+}
+
+.floating-logos::after {
+    content: '';
+    position: absolute;
+    width: 8vw;
+    height: 8vw;
+    background-image: url('https://1000logos.net/wp-content/uploads/2019/09/Michigan-State-Spartans-Logo.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15;
+    bottom: 1%;
+    right: 50%;
+    animation: float 14s ease-in-out infinite reverse;
+}
+
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) translateX(0px);
+    }
+    25% {
+        transform: translateY(-20px) translateX(15px);
+    }
+    50% {
+        transform: translateY(-40px) translateX(0px);
+    }
+    75% {
+        transform: translateY(-20px) translateX(-15px);
+    }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    animation: slideInUp 0.8s ease-out;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.hero-title {
+    font-size: var(--font-size-3xl);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #ffffff;
+    letter-spacing: -1px;
+}
+
+.hero-subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+/* Navbar toggle button styling */
+.nav-toggle-btn {
+    margin-left: 1rem;
+    padding: 0.4rem 0.9rem;
+    font-size: var(--font-size-sm);
+    min-width: 9.5rem;
+    text-align: center;
+    white-space: nowrap;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==================== BUTTON STYLES ==================== */
+.btn {
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 50px;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    display: inline-block;
+    letter-spacing: 0.5px;
+}
+
+/* Primary Button (Green) */
+.btn-primary {
+    background-color: var(--color-accent);
+    color: var(--color-bg-primary);
+    box-shadow: 0 0 20px rgba(0, 166, 81, 0.3);
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width var(--transition-normal), height var(--transition-normal);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-accent-light);
+    box-shadow: 0 0 30px rgba(0, 166, 81, 0.6);
+    transform: translateY(-2px);
+}
+
+.btn-primary:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+/* Secondary Button (Outlined) */
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-accent);
+    border: 2px solid var(--color-accent);
+}
+
+.btn-secondary::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-accent);
+    z-index: -1;
+    transition: left var(--transition-normal);
+}
+
+.btn-secondary:hover {
+    color: var(--color-bg-primary);
+}
+
+.btn-secondary:hover::after {
+    left: 0;
+}
+
+/* ==================== SECTION STYLES ==================== */
+.section {
+    min-height: 100vh;
+    padding: var(--spacing-xl) var(--spacing-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.section-content {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: var(--font-size-2xl);
+    margin-bottom: 2rem;
+    color: var(--color-accent);
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-accent), transparent);
+    border-radius: 2px;
+}
+
+.section-text {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-md);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ==================== ABOUT SECTION ==================== */
+.about-section {
+    background: linear-gradient(180deg, 
+        rgba(0, 166, 81, 0.03) 0%, 
+        transparent 50%, 
+        rgba(0, 166, 81, 0.03) 100%);
+}
+
+.about-container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 3rem;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.about-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 12px 32px rgba(0, 166, 81, 0.15);
+    object-fit: cover;
+}
+
+.about-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.skill-card {
+    padding: 2rem;
+    background-color: var(--color-bg-secondary);
+    border: 1px solid rgba(0, 166, 81, 0.2);
+    border-radius: 10px;
+    transition: all var(--transition-normal);
+    opacity: 0;
+    animation: slideInUp 0.6s ease-out forwards;
+}
+
+.skill-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.skill-card li {
+    margin-bottom: 0.5rem;
+    padding-left: 1rem;
+    position: relative;
+}
+
+.skill-card li::before {
+    content: '•';
+    color: var(--color-accent);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+.skill-card em {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+}
+
+.skill-card:nth-child(1) { animation-delay: 0.1s; }
+.skill-card:nth-child(2) { animation-delay: 0.2s; }
+.skill-card:nth-child(3) { animation-delay: 0.3s; }
+.skill-card:nth-child(4) { animation-delay: 0.4s; }
+
+.skill-card:hover {
+    background-color: rgba(0, 166, 81, 0.05);
+    border-color: var(--color-accent);
+    box-shadow: 0 8px 24px rgba(0, 166, 81, 0.1);
+    transform: translateY(-8px);
+}
+
+.skill-card h3 {
+    color: var(--color-accent);
+    margin-bottom: 0.5rem;
+    font-size: var(--font-size-md);
+}
+
+.skill-card p {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+}
+
+/* ==================== PROJECTS SECTION ==================== */
+.projects-section {
+    background: linear-gradient(180deg, 
+        rgba(0, 166, 81, 0.03) 0%, 
+        transparent 100%);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.project-card {
+    background-color: var(--color-bg-secondary);
+    border: 1px solid rgba(0, 166, 81, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all var(--transition-normal);
+    opacity: 0;
+    animation: slideInUp 0.6s ease-out forwards;
+}
+
+.project-card:nth-child(1) { animation-delay: 0.1s; }
+.project-card:nth-child(2) { animation-delay: 0.2s; }
+.project-card:nth-child(3) { animation-delay: 0.3s; }
+
+.project-image-placeholder {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, 
+        rgba(0, 166, 81, 0.2), 
+        rgba(0, 166, 81, 0.05));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--color-accent);
+    transition: all var(--transition-normal);
+}
+
+.project-card:hover .project-image-placeholder {
+    background: linear-gradient(135deg, 
+        rgba(0, 166, 81, 0.3), 
+        rgba(0, 166, 81, 0.1));
+    transform: scale(1.05);
+}
+
+.project-card h3 {
+    color: var(--color-accent);
+    padding: 1.5rem 1.5rem 0.5rem;
+    font-size: var(--font-size-md);
+}
+
+.project-card p {
+    color: var(--color-text-secondary);
+    padding: 0.5rem 1.5rem;
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+}
+
+.project-card .btn {
+    margin: 1.5rem;
+    width: calc(100% - 3rem);
+}
+
+.project-card:hover {
+    background-color: rgba(0, 166, 81, 0.05);
+    border-color: var(--color-accent);
+    box-shadow: 0 12px 32px rgba(0, 166, 81, 0.15);
+    transform: translateY(-8px);
+}
+
+/* ==================== CONTACT SECTION ==================== */
+.contact-section {
+    background: linear-gradient(180deg, 
+        transparent 0%, 
+        rgba(0, 166, 81, 0.03) 100%);
+}
+
+/* ==================== MODAL ==================== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: var(--color-bg-secondary);
+    margin: 0 auto;
+    padding: 2rem;
+    border: 1px solid var(--color-accent);
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+    color: var(--color-text-primary);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.close {
+    color: var(--color-text-primary);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: var(--color-accent);
+}
+
+/* ==================== FOOTER ==================== */
+.footer {
+    background-color: var(--color-bg-secondary);
+    border-top: 1px solid rgba(0, 208, 132, 0.1);
+    padding: 2rem;
+    text-align: center;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+}
+
+/* ==================== SCROLL-DRIVEN ANIMATIONS ==================== */
+/* These animations trigger when elements scroll into view */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+@media (max-width: 768px) {
+    /* Navigation */
+    .nav-menu {
+        display: none;
+    }
+    
+    .hamburger {
+        display: flex;
+    }
+    
+    /* Hero */
+    .hero-title {
+        font-size: var(--font-size-2xl);
+    }
+    
+    .hero-subtitle {
+        font-size: var(--font-size-md);
+    }
+    
+    /* Section Titles */
+    .section-title {
+        font-size: var(--font-size-xl);
+    }
+    
+    /* Section */
+    .section {
+        padding: var(--spacing-lg) var(--spacing-sm);
+    }
+    
+    /* Grids */
+    .skills-grid,
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Stack about container vertically on mobile */
+    .about-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .about-image img {
+        max-width: 100%;
+    }
+    
+    /* Remove animations on mobile for performance */
+    .skill-card,
+    .project-card {
+        animation: none;
+        opacity: 1;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .btn {
+        padding: 0.6rem 1.5rem;
+        font-size: var(--font-size-xs);
+    }
+}
