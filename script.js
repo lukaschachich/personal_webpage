@@ -214,22 +214,26 @@ function openModal(project) {
     const description = document.getElementById('modal-description');
     const tech = document.getElementById('modal-tech');
     const features = document.getElementById('modal-features');
+    const github = document.getElementById('modal-github');
 
     if (project === 'project1') {
-        title.textContent = 'E-Commerce Platform';
-        description.textContent = 'A comprehensive full-stack e-commerce application designed to provide a seamless online shopping experience. The platform integrates secure payment processing, real-time inventory tracking, and user-friendly admin dashboards for efficient management.';
-        tech.innerHTML = '<li>Frontend: React, HTML, CSS</li><li>Backend: Node.js, Express</li><li>Database: MongoDB</li><li>Payment: Stripe API</li>';
-        features.innerHTML = '<li>User authentication and profiles</li><li>Product catalog with search and filters</li><li>Shopping cart and checkout process</li><li>Order tracking and history</li><li>Admin panel for inventory management</li>';
+        title.textContent = 'CG Text Checker';
+        description.textContent = 'A Streamlit app that classifies whether text is human-written or AI-generated using XGBoost with feature extraction (text stats, sentiment, POS tags).';
+        tech.innerHTML = '<li>Streamlit, Python</li><li>XGBoost Classifier</li><li>spaCy, NLTK VADER</li>';
+        features.innerHTML = '<li>AI vs Human classification</li><li>Confidence scores</li><li>Feature analysis</li><li>Product category input</li>';
+        github.innerHTML = '<strong>GitHub:</strong> <a href="https://github.com/lukaschachich/Chachich-cg-text-checker" target="_blank">Chachich-cg-text-checker</a>';
     } else if (project === 'project2') {
-        title.textContent = 'Analytics Dashboard';
-        description.textContent = 'An interactive data visualization dashboard that transforms complex datasets into actionable insights. Built for real-time monitoring and customizable reporting across various business metrics.';
-        tech.innerHTML = '<li>Frontend: D3.js, Chart.js</li><li>Backend: Python, Flask</li><li>Database: PostgreSQL</li><li>Data Processing: Pandas, NumPy</li>';
-        features.innerHTML = '<li>Real-time data updates</li><li>Customizable chart types</li><li>Export functionality (PDF, CSV)</li><li>User role-based access</li><li>Responsive design for mobile devices</li>';
+        title.textContent = 'Stock Direction Predictor ML Lab';
+        description.textContent = 'An AI project I created with just some prompts. A modular ML pipeline for stock prediction using Random Forest classification. Fetches real stock data, engineers features, and backtests trading strategies entirely in-browser with Pyodide.';
+        tech.innerHTML = '<li>Python, Pyodide, scikit-learn</li><li>yfinance, Pandas, NumPy</li><li>JavaScript, Chart.js</li>';
+        features.innerHTML = '<li>Real stock data via yfinance</li><li>Random Forest classification</li><li>Backtesting & strategy simulation</li><li>Accuracy and returns charts</li><li>No backend required</li>';
+        github.innerHTML = '<strong>GitHub:</strong> <a href="https://github.com/lukaschachich/chachich-daily-stock-predictor-strategy" target="_blank">chachich-daily-stock-predictor-strategy</a>';
     } else if (project === 'project3') {
-        title.textContent = 'Mobile App Suite';
-        description.textContent = 'A suite of cross-platform mobile applications developed for iOS and Android. These apps provide essential tools for productivity, communication, and entertainment with native performance.';
-        tech.innerHTML = '<li>Framework: React Native</li><li>Languages: JavaScript, TypeScript</li><li>Backend: Firebase</li><li>APIs: RESTful, GraphQL</li>';
-        features.innerHTML = '<li>Cross-platform compatibility</li><li>Offline functionality</li><li>Push notifications</li><li>In-app purchases</li><li>Integration with device features (camera, GPS)</li>';
+        title.textContent = 'Personal Portfolio Website';
+        description.textContent = 'A modern, responsive portfolio website built with vanilla HTML, CSS, and JavaScript created with prompts, and tweaking HTML code. Features interactive animations, project modals, dark theme with MSU green accents, and mobile-first responsive design—no frameworks required.';
+        tech.innerHTML = '<li>HTML5, CSS3, JavaScript</li><li>Responsive Design & Mobile-first</li><li>CSS Animations & Parallax Effects</li>';
+        features.innerHTML = '<li>Responsive design (desktop, tablet, mobile)</li><li>Parallax scrolling & smooth animations</li><li>Interactive project modals with GitHub links</li><li>Dark theme with MSU color scheme</li><li>Semantic HTML & accessibility support</li>';
+        github.innerHTML = '<strong>GitHub:</strong> <a href="https://github.com/lukaschachich/personal_webpage" target="_blank">personal_webpage</a>';
     }
 
     modal.style.display = 'block';
