@@ -1,6 +1,6 @@
 /* ==================== CSS CUSTOM PROPERTIES (THEME VARIABLES) ==================== */
 :root {
-    /* Color Palette */
+    /* Color Palette - Dark Theme (Default) */
     --color-bg-primary: #0a0a0a;
     --color-bg-secondary: #1a1a1a;
     --color-text-primary: #ffffff;
@@ -8,6 +8,8 @@
     --color-accent: #00A651;
     --color-accent-light: #66C266;
     --color-accent-dark: #008000;
+    --navbar-bg: rgba(10, 10, 10, 0.95);
+    --card-bg: #1a1a1a;
     
     /* Spacing */
     --spacing-xs: 0.5rem;
@@ -32,6 +34,88 @@
     --transition-slow: 0.5s ease-in-out;
 }
 
+/* Light/Professional Theme (Theme 2) */
+body.theme-light {
+    --color-bg-primary: #f8f9fa;
+    --color-bg-secondary: #e8eaed;
+    --color-text-primary: #1a1a1a;
+    --color-text-secondary: #555555;
+    --color-accent: #003da5;
+    --color-accent-light: #4d7fe8;
+    --color-accent-dark: #001a4d;
+    --navbar-bg: rgba(255, 255, 255, 0.98);
+    --card-bg: #ffffff;
+    --font-primary: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Modern/Boxy Theme (Theme 3) */
+body.theme-modern {
+    --color-bg-primary: #0f1419;
+    --color-bg-secondary: #1a2332;
+    --color-text-primary: #e1e4e8;
+    --color-text-secondary: #8b949e;
+    --color-accent: #58a6ff;
+    --color-accent-light: #79c0ff;
+    --color-accent-dark: #1f6feb;
+    --navbar-bg: rgba(15, 20, 25, 0.98);
+    --card-bg: #1a2332;
+}
+
+/* ===== Theme 2 (Light/Professional) layout tweaks ===== */
+body.theme-light .navbar {
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+    border-bottom: 1px solid #dfe3e8;
+}
+
+body.theme-light .nav-link {
+    color: var(--color-text-primary);
+}
+
+/* Allow parallax images to show; rely on simple-bg / simple-bg-alt for imagery */
+body.theme-light .hero {
+    background-color: transparent;
+}
+
+body.theme-light .hero-background {
+    background-color: transparent;
+}
+
+body.theme-light .section {
+    background-color: #f8f9fa;
+}
+
+body.theme-light .section-title::after {
+    background: linear-gradient(90deg, var(--color-accent), transparent);
+}
+
+body.theme-light .btn {
+    border-radius: 0;
+    padding: 0.6rem 1.2rem;
+    box-shadow: 0 8px 20px rgba(0, 61, 165, 0.12);
+    letter-spacing: 0.2px;
+}
+
+body.theme-light .btn-primary {
+    background-color: var(--color-accent);
+    color: #ffffff;
+}
+
+body.theme-light .skill-card,
+body.theme-light .project-card,
+body.theme-light .modal-content {
+    border: 1px solid #dee2e6;
+    border-radius: 0;
+}
+
+body.theme-light .skill-card {
+    padding: 1.75rem;
+}
+
+body.theme-light .about-image img {
+    box-shadow: 0 12px 32px rgba(0, 61, 165, 0.15);
+    border-radius: 0;
+}
+
 /* ==================== GLOBAL STYLES ==================== */
 * {
     margin: 0;
@@ -49,6 +133,7 @@ body {
     color: var(--color-text-primary);
     line-height: 1.6;
     overflow-x: hidden;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 /* Remove scrollbar for smooth scroll animations */
@@ -70,7 +155,7 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: rgba(10, 10, 10, 0.95);
+    background-color: var(--navbar-bg);
     backdrop-filter: blur(10px);
     z-index: 1000;
     border-bottom: 1px solid rgba(0, 166, 81, 0.1);
@@ -311,6 +396,10 @@ body {
     opacity: 0.9;
 }
 
+body.theme-light .hero-subtitle {
+    color: #ffffff;
+}
+
 /* Navbar toggle button styling */
 .nav-toggle-btn {
     margin-left: 1rem;
@@ -353,6 +442,17 @@ body {
     background-color: var(--color-accent);
     color: var(--color-bg-primary);
     box-shadow: 0 0 20px rgba(0, 166, 81, 0.3);
+    border-radius: 50px;
+}
+
+body.theme-light .btn-primary {
+    color: #ffffff;
+    box-shadow: 0 0 20px rgba(0, 61, 165, 0.2);
+}
+
+body.theme-modern .btn-primary {
+    color: #ffffff;
+    box-shadow: 0 0 20px rgba(88, 166, 255, 0.2);
 }
 
 .btn-primary::before {
@@ -374,6 +474,14 @@ body {
     transform: translateY(-2px);
 }
 
+body.theme-light .btn-primary:hover {
+    box-shadow: 0 0 30px rgba(0, 61, 165, 0.3);
+}
+
+body.theme-modern .btn-primary:hover {
+    box-shadow: 0 0 30px rgba(88, 166, 255, 0.3);
+}
+
 .btn-primary:hover::before {
     width: 300px;
     height: 300px;
@@ -388,6 +496,15 @@ body {
     background-color: transparent;
     color: var(--color-accent);
     border: 2px solid var(--color-accent);
+    border-radius: 8px;
+}
+
+body.theme-light .btn-secondary {
+    border-radius: 2px;
+}
+
+body.theme-modern .btn-secondary {
+    border-radius: 6px;
 }
 
 .btn-secondary::after {
@@ -471,6 +588,20 @@ body {
         rgba(0, 166, 81, 0.03) 100%);
 }
 
+body.theme-light .about-section {
+    background: linear-gradient(180deg, 
+        rgba(0, 61, 165, 0.02) 0%, 
+        transparent 50%, 
+        rgba(0, 61, 165, 0.02) 100%);
+}
+
+body.theme-modern .about-section {
+    background: linear-gradient(180deg, 
+        rgba(88, 166, 255, 0.02) 0%, 
+        transparent 50%, 
+        rgba(88, 166, 255, 0.02) 100%);
+}
+
 .about-container {
     display: grid;
     grid-template-columns: 1fr 1.2fr;
@@ -493,6 +624,16 @@ body {
     object-fit: cover;
 }
 
+body.theme-light .about-image img {
+    box-shadow: 0 12px 32px rgba(0, 61, 165, 0.15);
+    border-radius: 2px;
+}
+
+body.theme-modern .about-image img {
+    box-shadow: 0 12px 32px rgba(88, 166, 255, 0.15);
+    border-radius: 8px;
+}
+
 .about-text {
     display: flex;
     flex-direction: column;
@@ -508,12 +649,22 @@ body {
 
 .skill-card {
     padding: 2rem;
-    background-color: var(--color-bg-secondary);
+    background-color: var(--card-bg);
     border: 1px solid rgba(0, 166, 81, 0.2);
     border-radius: 10px;
     transition: all var(--transition-normal);
     opacity: 0;
     animation: slideInUp 0.6s ease-out forwards;
+}
+
+body.theme-light .skill-card {
+    border: 1px solid #dee2e6;
+    border-radius: 2px;
+}
+
+body.theme-modern .skill-card {
+    border: 1px solid #30363d;
+    border-radius: 8px;
 }
 
 .skill-card ul {
@@ -553,6 +704,16 @@ body {
     transform: translateY(-8px);
 }
 
+body.theme-light .skill-card:hover {
+    background-color: rgba(0, 61, 165, 0.05);
+    box-shadow: 0 8px 24px rgba(0, 61, 165, 0.1);
+}
+
+body.theme-modern .skill-card:hover {
+    background-color: rgba(88, 166, 255, 0.05);
+    box-shadow: 0 8px 24px rgba(88, 166, 255, 0.1);
+}
+
 .skill-card h3 {
     color: var(--color-accent);
     margin-bottom: 0.5rem;
@@ -571,6 +732,18 @@ body {
         transparent 100%);
 }
 
+body.theme-light .projects-section {
+    background: linear-gradient(180deg, 
+        rgba(0, 61, 165, 0.02) 0%, 
+        transparent 100%);
+}
+
+body.theme-modern .projects-section {
+    background: linear-gradient(180deg, 
+        rgba(88, 166, 255, 0.02) 0%, 
+        transparent 100%);
+}
+
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -579,13 +752,23 @@ body {
 }
 
 .project-card {
-    background-color: var(--color-bg-secondary);
+    background-color: var(--card-bg);
     border: 1px solid rgba(0, 166, 81, 0.2);
-    border-radius: 10px;
+    border-radius: 15px;
     overflow: hidden;
     transition: all var(--transition-normal);
     opacity: 0;
     animation: slideInUp 0.6s ease-out forwards;
+}
+
+body.theme-light .project-card {
+    border: 1px solid #dee2e6;
+    border-radius: 2px;
+}
+
+body.theme-modern .project-card {
+    border: 1px solid #30363d;
+    border-radius: 8px;
 }
 
 .project-card:nth-child(1) { animation-delay: 0.1s; }
@@ -651,6 +834,16 @@ body {
     transform: translateY(-8px);
 }
 
+body.theme-light .project-card:hover {
+    background-color: rgba(0, 61, 165, 0.05);
+    box-shadow: 0 12px 32px rgba(0, 61, 165, 0.15);
+}
+
+body.theme-modern .project-card:hover {
+    background-color: rgba(88, 166, 255, 0.05);
+    box-shadow: 0 12px 32px rgba(88, 166, 255, 0.15);
+}
+
 /* ==================== CONTACT SECTION ==================== */
 .contact-section {
     background: linear-gradient(180deg, 
@@ -671,7 +864,7 @@ body {
 }
 
 .modal-content {
-    background-color: var(--color-bg-secondary);
+    background-color: var(--card-bg);
     margin: 0 auto;
     padding: 2rem;
     border: 1px solid var(--color-accent);
@@ -683,6 +876,14 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+body.theme-light .modal-content {
+    border-radius: 12px;
+}
+
+body.theme-modern .modal-content {
+    border-radius: 8px;
 }
 
 .close {
@@ -705,6 +906,14 @@ body {
     text-align: center;
     color: var(--color-text-secondary);
     font-size: var(--font-size-sm);
+}
+
+body.theme-light .footer {
+    border-top: 1px solid #dee2e6;
+}
+
+body.theme-modern .footer {
+    border-top: 1px solid #30363d;
 }
 
 /* ==================== SCROLL-DRIVEN ANIMATIONS ==================== */

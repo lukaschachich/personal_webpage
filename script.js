@@ -113,18 +113,28 @@ function smoothScroll(sectionId) {
 function toggleHeroBackground() {
     const bg = document.querySelector('.hero-background');
     const btn = document.querySelector('.nav-toggle-btn');
+    const body = document.body;
     if (!bg || !btn) return;
     
-    // Cycle: logos → simple-bg → simple-bg-alt → logos
+    // Cycle: logos (dark) → simple-bg (light) → simple-bg-alt (modern) → logos
     if (bg.classList.contains('simple-bg-alt')) {
         bg.classList.remove('simple-bg-alt');
+        bg.classList.remove('simple-bg');
+        body.classList.remove('theme-modern');
+        body.classList.remove('theme-light');
+        localStorage.setItem('pageTheme', 'dark');
         btn.setAttribute('aria-pressed', 'false');
     } else if (bg.classList.contains('simple-bg')) {
         bg.classList.remove('simple-bg');
         bg.classList.add('simple-bg-alt');
+        body.classList.remove('theme-light');
+        body.classList.add('theme-modern');
+        localStorage.setItem('pageTheme', 'modern');
         btn.setAttribute('aria-pressed', 'true');
     } else {
         bg.classList.add('simple-bg');
+        body.classList.add('theme-light');
+        localStorage.setItem('pageTheme', 'light');
         btn.setAttribute('aria-pressed', 'true');
     }
 }
@@ -273,8 +283,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const bg = document.querySelector('.hero-background');
     const btn = document.querySelector('.nav-toggle-btn');
     if (bg && btn) {
-        const hasBackground = bg.classList.contains('simple-bg') || bg.classList.contains('simple-bg-alt');
-        btn.setAttribute('aria-pressed', String(hasBackground));
+        // Restore theme from localStorage or use default
+        const savedTheme = localStorage.getItem('pageTheme');
+        if (savedTheme === 'light') {
+            bg.classList.add('simple-bg');
+            document.body.classList.add('theme-light');
+            btn.setAttribute('aria-pressed', 'true');
+        } else if (savedTheme === 'modern') {
+            bg.classList.add('simple-bg');
+            bg.classList.add('simple-bg-alt');
+            document.body.classList.add('theme-modern');
+            btn.setAttribute('aria-pressed', 'true');
+        } else {
+            const hasBackground = bg.classList.contains('simple-bg') || bg.classList.contains('simple-bg-alt');
+            btn.setAttribute('aria-pressed', String(hasBackground));
+        }
     }
 });
 
