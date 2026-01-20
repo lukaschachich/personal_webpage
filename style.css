@@ -640,6 +640,25 @@ body.theme-modern .about-image img {
     justify-content: center;
 }
 
+.about-subsection {
+    margin-bottom: 1.5rem;
+}
+
+.about-subsection:last-child {
+    margin-bottom: 0;
+}
+
+.about-subtitle {
+    font-size: var(--font-size-md);
+    color: var(--color-accent);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.about-subsection .section-text {
+    margin-bottom: 0;
+}
+
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
