@@ -100,14 +100,12 @@ class ScrollAnimations {
  */
 
 // Smooth scroll navigation
-function scrollTo(sectionId) {
-    console.log('Scrolling to:', sectionId);
+function smoothScroll(sectionId) {
     const element = document.getElementById(sectionId);
     if (element) {
-        console.log('Element found:', element);
-        element.scrollIntoView({ behavior: 'smooth' });
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } else {
-        console.log('Element not found for id:', sectionId);
+        console.warn('Element not found for id:', sectionId);
     }
 }
 
@@ -148,7 +146,7 @@ class NavigationEffects {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 const targetId = link.getAttribute('href').substring(1);
-                scrollTo(targetId);
+                smoothScroll(targetId);
             });
         });
     }
